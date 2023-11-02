@@ -26,7 +26,8 @@ export interface InstagramStoriesProps {
   listContainerProps?: ScrollViewProps;
   containerStyle?: ViewStyle;
   textStyle?: TextStyle;
-  animationDuration?: number;
+  animationConfig?: object;
+  progressDuration?: number;
   videoAnimationMaxDuration?: number;
   backgroundColor?: string;
   showName?: boolean;

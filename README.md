@@ -93,7 +93,8 @@ export default YourComponent;
  `listContainerProps`       | ScrollViewProps                              |                                            | Props to be passed to the underlying ScrollView component.
  `containerStyle`           | ViewStyle                                    |                                            | Additional styles for the story container.
  `textStyle`                | TextStyle                                    |                                            | Additional styles for text elements.
- `animationDuration`        | number                                       | 10000                                      | The duration of the story animations in ms.
+ `progressDuration`        | number                                       | 10000                                      | The duration of the story animations in ms.
+ `animationConfig`        | object                                       | { duration: 800 }                                      | The Config of the withTiming Component of react-native-reanimated
  `videoAnimationMaxDuration`| number                                       |                                            | The max duration of the video story animations in ms. If is this property not provided, the whole video will be played.
  `backgroundColor`          | string                                       | '#000000'                                  | The background color of story container.
  `showName`                 | boolean                                      | false                                      | Whether you want to show user name under avatar in avatar list.

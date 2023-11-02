@@ -8,7 +8,7 @@ import { clearProgressStorage, getProgressStorage, setProgressStorage } from '..
 import { InstagramStoriesProps, InstagramStoriesPublicMethods } from '../../core/dto/instagramStoriesDTO';
 import { ProgressStorageProps } from '../../core/dto/helpersDTO';
 import {
-  ANIMATION_DURATION, DEFAULT_COLORS, SEEN_LOADER_COLORS,
+  PROGRESS_DURATION, ANIMATION_CONFIG, DEFAULT_COLORS, SEEN_LOADER_COLORS,
   STORY_AVATAR_SIZE, AVATAR_SIZE, BACKGROUND_COLOR, CLOSE_COLOR,
 } from '../../core/constants';
 import StoryModal from '../Modal';
@@ -23,7 +23,8 @@ const InstagramStories = forwardRef<InstagramStoriesPublicMethods, InstagramStor
   storyAvatarSize = STORY_AVATAR_SIZE,
   listContainerStyle,
   listContainerProps,
-  animationDuration = ANIMATION_DURATION,
+  animationConfig = ANIMATION_CONFIG,
+  progressDuration = PROGRESS_DURATION,
   backgroundColor = BACKGROUND_COLOR,
   showName = false,
   nameTextStyle,
@@ -222,7 +223,8 @@ const InstagramStories = forwardRef<InstagramStoriesPublicMethods, InstagramStor
         ref={modalRef}
         stories={data}
         seenStories={seenStories}
-        duration={animationDuration}
+        duration={progressDuration}
+        animationConfig={animationConfig}
         storyAvatarSize={storyAvatarSize}
         onLoad={onLoad}
         onSeenStoriesChange={onSeenStoriesChange}

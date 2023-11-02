@@ -17,7 +17,7 @@ import ModalStyles from './Modal.styles';
 
 const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
   stories, seenStories, duration, videoDuration, storyAvatarSize, textStyle, containerStyle,
-  backgroundColor, videoProps, closeIconColor, onLoad, onShow, onHide, onSeenStoriesChange,
+  backgroundColor, videoProps, animationConfig, closeIconColor, onLoad, onShow, onHide, onSeenStoriesChange,
 }, ref ) => {
 
   const [ visible, setVisible ] = useState( false );
@@ -56,7 +56,7 @@ const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
 
     y.value = withTiming(
       HEIGHT,
-      ANIMATION_CONFIG,
+      animationConfig,
       () => runOnJS( setVisible )( false ),
     );
 
@@ -106,7 +106,7 @@ const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
     const newUserIndex = stories.findIndex( ( story ) => story.id === id );
     const newX = newUserIndex * WIDTH;
 
-    x.value = animated ? withTiming( newX, ANIMATION_CONFIG ) : newX;
+    x.value = animated ? withTiming( newX, animationConfig ) : newX;
     const newStoryIndex = stories[newUserIndex]?.stories.findIndex(
       ( story ) => story.id === seenStories.value[id],
     );
@@ -269,7 +269,7 @@ const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
       onShow?.( currentStory.value );
       onLoad?.();
 
-      y.value = withTiming( 0, ANIMATION_CONFIG );
+      y.value = withTiming( 0, animationConfig );
 
     } else {
 
