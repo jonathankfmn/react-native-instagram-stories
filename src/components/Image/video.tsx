@@ -1,10 +1,10 @@
 import React, {
   FC, memo, useRef, useState,
 } from 'react';
-import { LayoutChangeEvent } from 'react-native';
+import { LayoutChangeEvent, Platform } from 'react-native';
 import { runOnJS, useAnimatedReaction } from 'react-native-reanimated';
 import { StoryVideoProps } from '../../core/dto/componentsDTO';
-import { WIDTH } from '../../core/constants';
+import { WIDTH, HEIGHT } from '../../core/constants';
 
 const StoryVideo: FC<StoryVideoProps> = ( {
   uri, paused, isActive, onLoad, onLayout, ...props
@@ -36,7 +36,7 @@ const StoryVideo: FC<StoryVideoProps> = ( {
     return (
       <Video
         ref={ref}
-        style={{ width: WIDTH, aspectRatio: 0.5626 }}
+        style={{ width: WIDTH, aspectRatio: 0.5626, height: Platform.OS === "ios" ? HEIGHT - 90 : HEIGHT, }}
         {...props}
         source={{ uri }}
         paused={!pausedValue}

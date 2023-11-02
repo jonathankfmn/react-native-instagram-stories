@@ -7,10 +7,11 @@ import { StoryImageProps } from '../../core/dto/componentsDTO';
 import Loader from '../Loader';
 import { HEIGHT, LOADER_COLORS, WIDTH } from '../../core/constants';
 import ImageStyles from './Image.styles';
-import StoryVideo from './video';
+import ExpoStoryVideo from "./expo-video";
+import NativeStoryVideo from "./video";
 
 const StoryImage: FC<StoryImageProps> = ( {
-  stories, activeStory, defaultImage, isDefaultVideo, paused, videoProps, isActive,
+  stories, activeStory, defaultImage, isDefaultVideo, paused, videoPlayer="react-native-video", videoProps, isActive,
   onImageLayout, onLoad,
 } ) => {
 
@@ -81,14 +82,25 @@ const StoryImage: FC<StoryImageProps> = ( {
       <View style={ImageStyles.image}>
         {data.uri && (
           data.isVideo ? (
-            <StoryVideo
-              onLoad={onContentLoad}
-              onLayout={onImageLayout}
-              uri={data.uri}
-              paused={isPaused}
-              isActive={isActive}
-              {...videoProps}
-            />
+            videoPlayer === "expo" ? (
+              <ExpoStoryVideo
+                onLoad={onContentLoad}
+                onLayout={onImageLayout}
+                uri={data.uri}
+                paused={isPaused}
+                isActive={isActive}
+                {...videoProps}
+              />
+            ) : (
+              <NativeStoryVideo
+                onLoad={onContentLoad}
+                onLayout={onImageLayout}
+                uri={data.uri}
+                paused={isPaused}
+                isActive={isActive}
+                {...videoProps}
+              />
+            )
           ) : (
             <Image
               source={{ uri: data.uri }}

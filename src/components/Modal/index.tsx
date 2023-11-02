@@ -17,7 +17,7 @@ import ModalStyles from './Modal.styles';
 
 const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
   stories, seenStories, duration, videoDuration, storyAvatarSize, textStyle, containerStyle,
-  backgroundColor, videoProps, animationConfig, closeIconColor, onLoad, onShow, onHide, onSeenStoriesChange,
+  backgroundColor, videoPlayer, videoProps, animationConfig, closeIconColor, onLoad, onShow, onHide, onSeenStoriesChange,
 }, ref ) => {
 
   const [ visible, setVisible ] = useState( false );
@@ -314,6 +314,7 @@ const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
                 textStyle={textStyle}
                 buttonHandled={buttonHandled}
                 paused={paused}
+                videoPlayer={videoPlayer}
                 videoProps={videoProps}
                 closeColor={closeIconColor}
                 key={story.id}

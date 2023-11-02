@@ -29,6 +29,7 @@ export interface StoryModalProps {
   textStyle?: TextStyle;
   containerStyle?: ViewStyle;
   backgroundColor?: string;
+  videoPlayer?: "expo" | "react-native-video";
   videoProps?: any;
   animationConfig: object;
   closeIconColor: string;
@@ -63,6 +64,7 @@ export interface StoryImageProps {
   defaultImage: string;
   isDefaultVideo: boolean;
   paused: SharedValue<boolean>;
+  videoPlayer?: "expo" | "react-native-video";
   videoProps?: any;
   isActive: SharedValue<boolean>;
   onImageLayout: ( height: number ) => void;
@@ -109,6 +111,7 @@ export interface StoryListProps extends InstagramStoryProps, StoryHeaderProps {
   progress: SharedValue<number>;
   seenStories: SharedValue<ProgressStorageProps>;
   paused: SharedValue<boolean>;
+  videoPlayer?: "expo" | "react-native-video";
   videoProps?: any;
   onLoad: ( duration?: number ) => void;
 }
